@@ -1,0 +1,41 @@
+==========Adjust Screen Brightness: 
+
+//to get device name and current settings
+xrandr  --current (or xrandr --current --verbose)
+
+//to change brightness (where .5 here is between 0 and 1)
+xrandr --output eDP --brightness .5
+
+==========Bind Screen Brightness to F1 and F2
+
+//copy the brightnessUp and Down scripts I wrote to /bin/
+//Then set their permissions
+sudo chmod +x /bin/brightnessUp
+sudo chmod +x /bin/brightnessDown
+
+//Go to System Settings and then Keyboard and Custom Shortcuts
+//Create a custom shortcut with the name Brightness Up and the following command:
+gnome-terminal -e "/bin/brightnessUp"
+
+//Create a custom shortcut with the name Brightness Down and the following command:
+gnome-terminal -e "/bin/brightnessDown"
+
+
+
+==========Resize System Fonts: 
+
+//Install Unity Tweak Tools
+sudo apt-get install unity-tweak-tool
+
+//Launch it from the launcher and click the Fonts icon for options
+
+===========Set Drag and Drop from Keyboard
+
+//Install Xdotool
+suto apt install xdotool
+
+//Go to System Settings and then Keyboard and Custom Shortcuts
+//Create a custom shortcut with the name Mousedown (or whatver you want) and the following command:
+xdotool mousedown 1
+
+
