@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#get current brightness
+current=$(xrandr --current --verbose | grep "Brightness: 0" | cut -f2- -d":")
+#echo "Current Value is $current"
+
+#find new brightness value (no lower than zero)
+newVal=$(echo $current - .1)
+#echo "Newval now is $newVal"
+
+newVal=$(echo "$newVal" | bc)
+#echo "Newval now is $newVal"
+
+
+if [ $(echo "$newVal < 0" | bc) -eq 1 ]
+then
+    newVal=0
+fi
+
+#set new brightness value
+xrandr --output eDP --brightness "$newVal"
+#echo "Current Value is $current and newVal is $newVal"
+
+exit 0
